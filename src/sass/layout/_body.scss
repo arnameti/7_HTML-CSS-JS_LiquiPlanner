@@ -1,3 +1,15 @@
+@use '../util' as u;
+
 body {
   background-color: var(--clr-background-white);
+
+  .application-title {
+    padding-block: u.rem(10);
+    font-family: var(--font-secondary);
+    font-size: u.rem(50);
+    text-transform: capitalize;
+    text-align: center;
+    background-color: var(--clr-dark-grey-2);
+    color: var(--clr-white);
+  }
 }
