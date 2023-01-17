@@ -12,4 +12,11 @@ body {
     background-color: var(--clr-dark-grey-2);
     color: var(--clr-white);
   }
+
+  .application-wrapper {
+    min-height: calc(100vh - u.rem(83));
+
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
 }
