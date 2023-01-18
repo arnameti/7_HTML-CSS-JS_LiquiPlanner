@@ -1,0 +1,8 @@
+@use '../util' as u;
+
+.form-container {
+  grid-column: 2 / 3;
+  background-color: var(--clr-light-grey-1);
+  border-radius: u.rem(10);
+  padding: u.rem(15);
+}

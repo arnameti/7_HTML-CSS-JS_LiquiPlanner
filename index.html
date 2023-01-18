@@ -16,28 +16,35 @@
   <body>
     <div class="application-title">liqui-planner</div>
     <div class="application-wrapper">
-      <section class="from-container">
+      <section class="form-container">
+        <!-- prettier-ignore -->
         <form action="submit" class="form">
-          <h1 class="form__title">new income / expense</h1>
-          <div class="form__row">
-            <label class="form__label-title" for="title">title</label>
-            <input
-              class="form__input-title"
-              type="text"
-              id="title"
-              placeholder="e.g. pay-off"
-            />
-            <label for="income">income</label>
-            <input type="radio" name="radio" for="income" />
-            <label for="expense" title="type of input">expense</label>
-            <input type="radio" name="radio" for="expense" />
+          <h1 class="form__title mb-15">new income / expense</h1>
+          
+          <div class="form__row mb-15">
+            <!-- title -->
+            <label class="form__label form__lable--title" for="title">title</label>
+            <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
+            
+            <!-- income -->
+            <label class="form__label form__label--income" for="income">income</label>
+            <input class="form__input form__input--income"type="radio" name="radio"for="income"/>
+
+            <!-- expense -->
+            <label class="form__label form__label--expense" for="expense" title="type of input">expense</label>
+            <input class="form__input form__input--expense" type="radio" name="radio" for="expense"/>
           </div>
-          <div class="form__row">
-            <label class="form__label-title" for="amount">amount</label>
-            <input class="form__input-amount" type="number" id="amount" />
-            <label for="date">date</label>
-            <input type="date" id="date" />
+
+          <div class="form__row mb-15">
+            <!-- amount -->
+            <label class="form__label form__label--amount" for="amount">amount</label>
+            <input class="form__input form__input--amount" type="number" id="amount" />
+
+            <!-- date -->
+            <label class="form__label form__label--date" for="date">date</label>
+            <input class="form__input form__input--date" type="date" id="date" />
           </div>
+
           <button class="form__button">insert</button>
         </form>
       </section>

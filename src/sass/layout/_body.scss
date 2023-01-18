@@ -15,8 +15,10 @@ body {
 
   .application-wrapper {
     min-height: calc(100vh - u.rem(83));
+    padding: u.rem(20);
 
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    align-content: start;
   }
 }
