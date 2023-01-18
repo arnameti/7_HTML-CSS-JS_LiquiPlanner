@@ -2,7 +2,7 @@
 
 body {
   background-color: hsl(0, 0%, 100%);
-//   font-family: var(--font-primary);
+  font-family: var(--font-primary);
 }
 
 ul {
@@ -14,11 +14,9 @@ a:visited {
   text-decoration: none;
 }
 
-.heading1,
-.heading2,
-.heading3 {
-  font-weight: 700;
-  line-height: 1.1;
+.heading1 {
+  font-size: u.rem(22);
+  font-weight: 400;
 }
 
 // .heading-1 {

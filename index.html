@@ -15,6 +15,32 @@
   </head>
   <body>
     <div class="application-title">liqui-planner</div>
-    <div class="application-wrapper"></div>
+    <div class="application-wrapper">
+      <section class="from-container">
+        <form action="submit" class="form">
+          <h1 class="form__title">new income / expense</h1>
+          <div class="form__row">
+            <label class="form__label-title" for="title">title</label>
+            <input
+              class="form__input-title"
+              type="text"
+              id="title"
+              placeholder="e.g. pay-off"
+            />
+            <label for="income">income</label>
+            <input type="radio" name="radio" for="income" />
+            <label for="expense" title="type of input">expense</label>
+            <input type="radio" name="radio" for="expense" />
+          </div>
+          <div class="form__row">
+            <label class="form__label-title" for="amount">amount</label>
+            <input class="form__input-amount" type="number" id="amount" />
+            <label for="date">date</label>
+            <input type="date" id="date" />
+          </div>
+          <button class="form__button">insert</button>
+        </form>
+      </section>
+    </div>
   </body>
 </html>
