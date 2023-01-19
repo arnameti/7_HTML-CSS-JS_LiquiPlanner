@@ -26,13 +26,15 @@
               <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
            </div> 
 
-            <!-- income -->
-            <label class="form__label form__label--income" for="income">income</label>
-            <input class="form__input form__input--income"type="radio" name="radio"for="income"/>
+            <div class="form__row--radio-group">
+              <!-- income -->
+              <input class="form__input form__input--income"type="radio" name="radio" value="expense" id="income"/>
+              <label class="form__label form__label--income" for="income">income</label>
 
-            <!-- expense -->
-            <label class="form__label form__label--expense" for="expense" title="type of input">expense</label>
-            <input class="form__input form__input--expense" type="radio" name="radio" for="expense"/>
+              <!-- expense -->
+              <input class="form__input form__input--expense" type="radio" name="radio" value="expense" id="expense"/>
+              <label class="form__label form__label--expense" for="expense" title="type of input">expense</label>
+            </div>
           </div>
 
           <div class="form__row mb-20">
@@ -40,6 +42,7 @@
             <div class="form__row--amount-group">
               <label class="form__label form__label--amount" for="amount">amount</label>
               <input class="form__input form__input--amount" type="number" id="amount" />
+
             </div>
 
             <!-- date -->
