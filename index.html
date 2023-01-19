@@ -14,16 +14,15 @@
     <title>Liqui-Planner</title>
   </head>
   <body>
-    <div class="application-title">liqui-planner</div>
-    <section class="form-container mb-15">
-      <!-- prettier-ignore -->
-      <form action="submit" class="form">
-          <h1 class="form__title heading-1 mb-15">new income / expense</h1>
+    <div class="application-title mb-20">liqui-planner</div>
+    <!-- prettier-ignore -->
+    <form action="submit" class="form mb-5">
+          <h1 class="form__title heading-1 mb-20">new income / expense</h1>
           
-          <div class="form__row mb-15">
+          <div class="form__row mb-20">
             <!-- title -->
             <div class="form__row--title-group">
-              <label class="form__label form__lable--title" for="title">title</label>
+              <label class="form__label form__label--title" for="title">title</label>
               <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
            </div> 
 
@@ -36,7 +35,7 @@
             <input class="form__input form__input--expense" type="radio" name="radio" for="expense"/>
           </div>
 
-          <div class="form__row mb-15">
+          <div class="form__row mb-20">
             <!-- amount -->
             <div class="form__row--amount-group">
               <label class="form__label form__label--amount" for="amount">amount</label>
@@ -50,9 +49,10 @@
            </div>
           </div>
 
-          <button class="form__button">insert</button>
+          <div class="form__row--button-wrapper">
+            <button class="form__button">insert</button>
+          </div>
         </form>
-    </section>
     <aside class="summary"></aside>
   </body>
 </html>

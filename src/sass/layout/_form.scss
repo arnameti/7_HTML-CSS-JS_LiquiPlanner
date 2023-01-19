@@ -1,16 +1,14 @@
 @use '../util' as u;
 
-.form-container {
+.form {
+  line-height: 1.1;
+
   width: 100%;
   max-width: u.rem(1100);
   margin: 0 auto;
   background-color: var(--clr-light-grey-1);
   border-radius: u.rem(10);
   padding: u.rem(30);
-}
-
-.form {
-  line-height: 1.1;
 
   &__title {
     text-transform: capitalize;
@@ -20,19 +18,37 @@
     display: flex;
     align-items: center;
 
-    &--title-group {
+    &--title-group,
+    &--amount-group,
+    &--date-group {
       display: flex;
+      align-items: center;
+      border: 1px solid hsl(210, 14%, 83%);
+    }
+
+    &--title-group,
+    &--amount-group {
+      border-top-left-radius: u.rem(20);
+      border-bottom-left-radius: u.rem(20);
+    }
+
+    &--title-group {
       width: 100%;
     }
 
     &--amount-group {
-      display: flex;
       width: 50%;
+      border-right: none;
     }
 
     &--date-group {
-      display: flex;
       width: 50%;
+      border: none;
+    }
+
+    &--button-wrapper {
+      display: flex;
+      justify-content: flex-end;
     }
   }
 
@@ -40,16 +56,34 @@
     text-transform: capitalize;
     font-weight: 300;
     color: var(--clr-dark-grey-2);
+
+    &--title,
+    &--amount,
+    &--date {
+      padding-inline: u.rem(25);
+    }
+
+    &--date {
+      border-block: 1px solid hsl(210, 14%, 83%);
+      padding-block: u.rem(10.5);
+    }
   }
 
   &__input {
     &--title,
     &--amount,
     &--date {
-      padding: u.rem(10);
+      font-family: var(--font-primary);
+      letter-spacing: u.rem(1);
+      padding: u.rem(7);
       font-size: u.rem(16);
       font-weight: 300;
       color: var(--clr-dark-grey-1);
+      border: none;
+
+      &:focus {
+        outline-color: var(--clr-light-blue);
+      }
     }
 
     &--title {
@@ -62,6 +96,22 @@
 
     &--date {
       width: 100%;
+      border: 1px solid hsl(210, 14%, 83%);
+      border-left: none;
+      border-top-right-radius: u.rem(20);
+      border-bottom-right-radius: u.rem(20);
     }
+  }
+
+  &__button {
+    text-transform: capitalize;
+    font-size: u.rem(16);
+    font-weight: 300;
+    letter-spacing: u.rem(1);
+    padding: u.rem(10) u.rem(100);
+    border: none;
+    background-color: var(--clr-blue);
+    color: var(--clr-white);
+    border-radius: u.rem(20);
   }
 }
