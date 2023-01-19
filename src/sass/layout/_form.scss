@@ -1,8 +1,67 @@
 @use '../util' as u;
 
 .form-container {
-  grid-column: 2 / 3;
+  width: 100%;
+  max-width: u.rem(1100);
+  margin: 0 auto;
   background-color: var(--clr-light-grey-1);
   border-radius: u.rem(10);
-  padding: u.rem(15);
+  padding: u.rem(30);
+}
+
+.form {
+  line-height: 1.1;
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+
+    &--title-group {
+      display: flex;
+      width: 100%;
+    }
+
+    &--amount-group {
+      display: flex;
+      width: 50%;
+    }
+
+    &--date-group {
+      display: flex;
+      width: 50%;
+    }
+  }
+
+  &__label {
+    text-transform: capitalize;
+    font-weight: 300;
+    color: var(--clr-dark-grey-2);
+  }
+
+  &__input {
+    &--title,
+    &--amount,
+    &--date {
+      padding: u.rem(10);
+      font-size: u.rem(16);
+      font-weight: 300;
+      color: var(--clr-dark-grey-1);
+    }
+
+    &--title {
+      width: 100%;
+    }
+
+    &--amount {
+      width: 100%;
+    }
+
+    &--date {
+      width: 100%;
+    }
+  }
 }

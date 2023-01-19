@@ -15,17 +15,18 @@
   </head>
   <body>
     <div class="application-title">liqui-planner</div>
-    <div class="application-wrapper">
-      <section class="form-container">
-        <!-- prettier-ignore -->
-        <form action="submit" class="form">
-          <h1 class="form__title mb-15">new income / expense</h1>
+    <section class="form-container mb-15">
+      <!-- prettier-ignore -->
+      <form action="submit" class="form">
+          <h1 class="form__title heading-1 mb-15">new income / expense</h1>
           
           <div class="form__row mb-15">
             <!-- title -->
-            <label class="form__label form__lable--title" for="title">title</label>
-            <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
-            
+            <div class="form__row--title-group">
+              <label class="form__label form__lable--title" for="title">title</label>
+              <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
+           </div> 
+
             <!-- income -->
             <label class="form__label form__label--income" for="income">income</label>
             <input class="form__input form__input--income"type="radio" name="radio"for="income"/>
@@ -37,17 +38,21 @@
 
           <div class="form__row mb-15">
             <!-- amount -->
-            <label class="form__label form__label--amount" for="amount">amount</label>
-            <input class="form__input form__input--amount" type="number" id="amount" />
+            <div class="form__row--amount-group">
+              <label class="form__label form__label--amount" for="amount">amount</label>
+              <input class="form__input form__input--amount" type="number" id="amount" />
+            </div>
 
             <!-- date -->
-            <label class="form__label form__label--date" for="date">date</label>
-            <input class="form__input form__input--date" type="date" id="date" />
+            <div class="form__row--date-group">
+              <label class="form__label form__label--date" for="date">date</label>
+              <input class="form__input form__input--date" type="date" id="date" />
+           </div>
           </div>
 
           <button class="form__button">insert</button>
         </form>
-      </section>
-    </div>
+    </section>
+    <aside class="summary"></aside>
   </body>
 </html>

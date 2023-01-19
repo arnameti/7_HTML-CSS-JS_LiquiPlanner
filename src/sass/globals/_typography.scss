@@ -14,7 +14,15 @@ a:visited {
   text-decoration: none;
 }
 
-.heading1 {
+input,
+textarea,
+button,
+select,
+option {
+  font-family: inherit;
+}
+
+.heading-1 {
   font-size: u.rem(22);
   font-weight: 400;
 }
