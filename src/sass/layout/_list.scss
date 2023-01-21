@@ -1,0 +1,72 @@
+@use '../util' as u;
+
+.list {
+  width: min(100% - u.rem(30), u.rem(1000));
+  margin-inline: auto;
+  height: u.rem(500);
+  border-radius: u.rem(5);
+  border: 1px solid transparent;
+
+  &__month {
+    border-bottom: 1px solid hsl(210, 14%, 83%);
+    padding-bottom: u.rem(30);
+  }
+
+  &__date_amount {
+    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info-row {
+    width: min(100%, u.rem(990));
+    margin-inline: auto;
+  }
+
+  &__entry {
+    border: 1px solid hsl(210, 14%, 83%);
+    border-radius: u.rem(20);
+
+    font-size: u.rem(14);
+    font-weight: 300;
+
+    display: flex;
+
+    &__date {
+      padding: u.rem(7) u.rem(15);
+      border-top-left-radius: u.rem(20);
+      border-bottom-left-radius: u.rem(20);
+      background-color: var(--clr-light-grey-1);
+    }
+
+    &__title {
+      padding: u.rem(7) u.rem(15);
+      background-color: var(--clr-light-red-1);
+      color: var(--clr-red);
+      width: calc(100% - u.rem(229.61));
+    }
+
+    &__amount {
+      padding: u.rem(7) u.rem(15);
+      background-color: var(--clr-light-red-1);
+      color: var(--clr-red);
+    }
+
+    &__delete {
+      background: transparent;
+      border: none;
+      padding-left: u.rem(15);
+
+      padding: u.rem(7) u.rem(15);
+      border-top-right-radius: u.rem(20);
+      border-bottom-right-radius: u.rem(20);
+      background-color: var(--clr-light-grey-1);
+    }
+
+    &__delete-img {
+      height: u.rem(15);
+      width: u.rem(15);
+    }
+  }
+}

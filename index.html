@@ -32,7 +32,7 @@
               <label class="form__label form__label--income" for="income">income</label>
 
               <!-- expense -->
-              <input class="form__input form__input--expense" type="radio" name="radio" value="expense" id="expense"/>
+              <input class="form__input form__input--expense" type="radio" name="radio" value="expense" id="expense" checked/>
               <label class="form__label form__label--expense" for="expense" title="type of input">expense</label>
             </div>
           </div>
@@ -55,7 +55,62 @@
           <div class="form__row--button-wrapper">
             <button class="form__button">insert</button>
           </div>
-        </form>
-    <aside class="summary"></aside>
+     </form>
+    <article class="summary mb-5">
+      <div class="summary__row mb-5">
+        <span class="summary__incomes">incomes:</span>
+        <span class="summary__incomes-amount">400.00 $</span>
+      </div>
+      <div class="summary__row">
+        <span class="summary__expenses">expenses:</span>
+        <span class="summary__expenses-amount">1100.00 $</span>
+      </div>
+      <div class="summary__row mt-20">
+        <span class="summary__result">result:</span>
+        <span class="summary__result-amount">-1100.00 $</span>
+      </div>
+    </article>
+    <section class="list">
+      <article class="list__month">
+        <div class="list__date_amount mt-20 mb-20">
+          <h1 class="list__date heading-1">march 2020</h1>
+          <span class="list__amount">800.00 $</span>
+        </div>
+        <ul class="list__info-row">
+          <li class="list__entry">
+            <span class="list__entry__date">16.03.2023</span>
+            <span class="list__entry__title">einkaufen</span>
+            <span class="list__entry__amount">800.00 $</span>
+            <button class="list__entry__delete">
+              <img
+                class="list__entry__delete-img"
+                src="src/assets/trash-solid.svg"
+                alt=""
+              />
+            </button>
+          </li>
+        </ul>
+      </article>
+      <article class="list__month">
+        <div class="list__date_amount mt-20 mb-20">
+          <h1 class="list__date heading-1">march 2020</h1>
+          <span class="list__amount">800.00 $</span>
+        </div>
+        <ul class="list__info-row">
+          <li class="list__entry">
+            <span class="list__entry__date">16.03.2023</span>
+            <span class="list__entry__title">einkaufen</span>
+            <span class="list__entry__amount">800.00 $</span>
+            <button class="list__entry__delete">
+              <img
+                class="list__entry__delete-img"
+                src="src/assets/trash-solid.svg"
+                alt=""
+              />
+            </button>
+          </li>
+        </ul>
+      </article>
+    </section>
   </body>
 </html>

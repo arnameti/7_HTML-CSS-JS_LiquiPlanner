@@ -1,10 +1,41 @@
 @use '../util' as u;
 
 .summary {
-  width: 100%;
-  max-width: u.rem(570);
-  margin: 0 auto;
-  height: u.rem(210);
-  border: 1px solid black;
+  border-radius: u.rem(10);
+  width: calc(100% - u.rem(30));
+  max-width: u.rem(450);
+  margin-inline: auto;
+  background-color: var(--clr-light-grey-1);
+  padding: u.rem(30);
+  padding-right: u.rem(25);
   border-radius: u.rem(5);
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+
+  &__incomes-amount {
+    transform: translateX(-10);
+  }
+
+  &__expenses-amount {
+    border-bottom: 1px solid hsl(210, 14%, 83%);
+    padding-bottom: u.rem(10);
+    padding-inline: u.rem(10);
+  }
+
+  &__result {
+    font-weight: 500;
+  }
+
+  &__result-amount {
+    padding: u.rem(5) u.rem(10);
+    color: var(--clr-white);
+    background-color: var(--clr-red);
+    border-radius: u.rem(20);
+  }
 }

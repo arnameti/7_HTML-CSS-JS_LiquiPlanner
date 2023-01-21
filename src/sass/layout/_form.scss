@@ -3,11 +3,11 @@
 .form {
   line-height: 1.1;
 
-  width: 95%;
+  width: calc(100% - u.rem(30));
   max-width: u.rem(1100);
-  margin: 0 auto;
+  margin-inline: auto;
   background-color: var(--clr-light-grey-1);
-  border-radius: u.rem(10);
+  border-radius: u.rem(5);
   padding: u.rem(30);
 
   &__title {
