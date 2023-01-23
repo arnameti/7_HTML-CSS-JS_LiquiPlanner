@@ -9,26 +9,26 @@
     <!-- Link CSS -->
     <link rel="stylesheet" href="src/sass/main.scss" />
     <!-- Link JS -->
-    <script defer src="src/js/script.js"></script>
+    <script type="module" src="src/js/controller.js"></script>
 
     <title>Liqui-Planner</title>
   </head>
   <body>
     <div class="application-title mb-20">liqui-planner</div>
     <!-- prettier-ignore -->
-    <form action="submit" class="form mb-5">
+    <form action="submit" class="form mb-5" data-form>
           <h1 class="form__title heading-1 mb-20">new income / expense</h1>
           
           <div class="form__row mb-20">
             <!-- title -->
             <div class="form__row--title-group">
               <label class="form__label form__label--title" for="title">title</label>
-              <input class="form__input form__input--title" type="text" id="title" placeholder="e.g. pay-off"/>
+              <input class="form__input form__input--title" data-input-title type="text" id="title" placeholder="e.g. pay-off"/>
            </div> 
 
             <div class="form__row--radio-group">
               <!-- income -->
-              <input class="form__input form__input--income"type="radio" name="radio" value="expense" id="income"/>
+              <input class="form__input form__input--income"type="radio" name="radio" value="income" id="income"/>
               <label class="form__label form__label--income" for="income">income</label>
 
               <!-- expense -->
@@ -41,14 +41,14 @@
             <!-- amount -->
             <div class="form__row--amount-group">
               <label class="form__label form__label--amount" for="amount">amount</label>
-              <input class="form__input form__input--amount" type="number" id="amount" />
+              <input class="form__input form__input--amount" data-input-amount type="number" id="amount" />
 
             </div>
 
             <!-- date -->
             <div class="form__row--date-group">
               <label class="form__label form__label--date" for="date">date</label>
-              <input class="form__input form__input--date" type="date" id="date" />
+              <input class="form__input form__input--date" data-input-date type="date" id="date" />
            </div>
           </div>
 
@@ -70,8 +70,8 @@
         <span class="summary__result-amount">-1100.00 $</span>
       </div>
     </article>
-    <section class="list">
-      <article class="list__month">
+    <section class="list" data-list>
+      <!-- <article class="list__month">
         <div class="list__date_amount mt-20 mb-20">
           <h1 class="list__date heading-1">march 2020</h1>
           <span class="list__amount">800.00 $</span>
@@ -91,7 +91,7 @@
           </li>
         </ul>
       </article>
-      <article class="list__month">
+      <article class="list__month" data-list-container>
         <div class="list__date_amount mt-20 mb-20">
           <h1 class="list__date heading-1">march 2020</h1>
           <span class="list__amount">800.00 $</span>
@@ -110,7 +110,7 @@
             </button>
           </li>
         </ul>
-      </article>
+      </article> -->
     </section>
   </body>
 </html>

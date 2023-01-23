@@ -34,7 +34,12 @@
     display: flex;
 
     &__date {
-      padding: u.rem(7) u.rem(15);
+      // padding: u.rem(7) u.rem(15);
+      width: u.rem(120);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       border-top-left-radius: u.rem(20);
       border-bottom-left-radius: u.rem(20);
       background-color: var(--clr-light-grey-1);
@@ -44,13 +49,18 @@
       padding: u.rem(7) u.rem(15);
       background-color: var(--clr-light-red-1);
       color: var(--clr-red);
-      width: calc(100% - u.rem(229.61));
+      width: calc(100% - u.rem(305));
     }
 
     &__amount {
-      padding: u.rem(7) u.rem(15);
+      // padding: u.rem(7) u.rem(15);
       background-color: var(--clr-light-red-1);
       color: var(--clr-red);
+
+      width: u.rem(150);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     &__delete {
