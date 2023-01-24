@@ -80,3 +80,17 @@
     }
   }
 }
+
+[data-type-amount='expense'] {
+  padding: u.rem(5) u.rem(10);
+  color: var(--clr-white);
+  background-color: var(--clr-red);
+  border-radius: u.rem(20);
+}
+
+[data-type-amount='income'] {
+  padding: u.rem(5) u.rem(10);
+  color: var(--clr-white);
+  background-color: var(--clr-green);
+  border-radius: u.rem(20);
+}

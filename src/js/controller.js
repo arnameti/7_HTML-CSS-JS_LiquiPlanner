@@ -9,20 +9,3 @@ const init = function () {
 };
 
 init();
-
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-const date = new Date(2023 - 01 - 06);
-console.log(months[date.getMonth()] + ' ' + date.getFullYear());

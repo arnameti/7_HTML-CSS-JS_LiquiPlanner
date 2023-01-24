@@ -10,23 +10,17 @@ const ListView = class {
       const inputTitleEl = document.querySelector('[data-input-title]');
       const inptAmountEl = document.querySelector('[data-input-amount]');
       const inputDateEl = document.querySelector('[data-input-date]');
+      const radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
 
       const inputValues = {
         title: inputTitleEl.value,
         amount: inptAmountEl.value,
         date: inputDateEl.value,
+        radioBtns: radioBtnsEl,
       };
 
       handler(inputValues);
     });
-  }
-
-  formatDate(inputDate) {
-    const date = new Date(inputDate);
-    // prettier-ignore
-    const months =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-
-    return `${months[date.getMonth()]} ${date.getFullYear()}`;
   }
 
   render(inputValues) {
@@ -38,12 +32,32 @@ const ListView = class {
     listContainer.insertAdjacentHTML('afterbegin', markUp);
   }
 
+  formatDate(inputDate) {
+    const date = new Date(inputDate);
+    // prettier-ignore
+    const months =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+    return `${months[date.getMonth()]} ${date.getFullYear()}`;
+  }
+
+  checkAmountType(inputValues) {
+    let value;
+    inputValues.radioBtns.forEach(radioBtn => {
+      if (radioBtn.checked) {
+        value = radioBtn.value;
+      }
+    });
+    return value;
+  }
+
   _generateMarkUp(inputValues) {
     return `
     <article class="list__month">
     <div class="list__date_amount mt-20 mb-20">
       <h1 class="list__date heading-1">${this.formatDate(inputValues.date)}</h1>
-      <span class="list__amount">800.00 $</span>
+      <span class="list__amount" data-type-amount="${this.checkAmountType(
+        inputValues
+      )}">80000 $</span>
     </div>
      <ul class="list__info-row">
       <li class="list__entry">
