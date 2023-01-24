@@ -10,6 +10,17 @@
   border-radius: u.rem(5);
   padding: u.rem(30);
 
+  &__error-box {
+    display: flex;
+    flex-direction: column;
+    gap: u.rem(5);
+    margin-bottom: u.rem(20);
+    color: var(--clr-red);
+    border: 1px solid hsl(354, 70%, 54%);
+    border-radius: u.rem(5);
+    padding: u.rem(10);
+  }
+
   &__title {
     text-transform: capitalize;
   }
@@ -157,6 +168,10 @@
     color: var(--clr-white);
     border-radius: u.rem(20);
   }
+}
+
+[data-error-box='noErrors'] {
+  display: none;
 }
 
 @media screen and (max-width: u.em(580)) {

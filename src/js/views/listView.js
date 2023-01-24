@@ -3,24 +3,63 @@ import deleteIcon from 'url:../../assets/trash-solid.svg';
 const ListView = class {
   _formEL = document.querySelector('[data-form]');
 
+  _inputTitleEl = document.querySelector('[data-input-title]');
+  _inputAmountEl = document.querySelector('[data-input-amount]');
+  _inputDateEl = document.querySelector('[data-input-date]');
+  _radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
+
+  _errorMessages = [];
+
   getInputData(handler) {
-    this._formEL.addEventListener('submit', function (e) {
+    this._formEL.addEventListener('submit', e => {
       e.preventDefault();
 
-      const inputTitleEl = document.querySelector('[data-input-title]');
-      const inptAmountEl = document.querySelector('[data-input-amount]');
-      const inputDateEl = document.querySelector('[data-input-date]');
-      const radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
-
       const inputValues = {
-        title: inputTitleEl.value,
-        amount: inptAmountEl.value,
-        date: inputDateEl.value,
-        radioBtns: radioBtnsEl,
+        title: this._inputTitleEl.value,
+        amount: this._inputAmountEl.value,
+        date: this._inputDateEl.value,
+        radioBtns: this._radioBtnsEl,
       };
 
-      handler(inputValues);
+      this.checkInputFields(inputValues);
+
+      if (this._errorMessages.length <= 0) {
+        handler(inputValues);
+
+        this._inputAmountEl.value = '';
+        this._inputTitleEl.value = '';
+        this._inputDateEl.value = '';
+        this._inputTitleEl.focus();
+      }
+
+      this._errorMessages = [];
     });
+  }
+
+  checkInputFields(inputValues) {
+    if (inputValues.title === '' || inputValues.title === null)
+      this._errorMessages.push('Title is required');
+    if (inputValues.amount === '' || inputValues.amount === null)
+      this._errorMessages.push('Amount is required');
+    if (inputValues.date === '' || inputValues.date === null)
+      this._errorMessages.push('Date is required');
+
+    this.renderErrorMessage(this._errorMessages);
+  }
+
+  renderErrorMessage(errorMessages) {
+    const errorBox = document.querySelector('[data-error-box]');
+
+    if (errorMessages.length <= 0) {
+      errorBox.innerHTML = '';
+      errorBox.insertAdjacentHTML('afterbegin', '');
+      errorBox.dataset.errorBox = 'noErrors';
+    } else {
+      const markUp = errorMessages.map(msg => `<li> ${msg}</li>`).join('');
+      errorBox.innerHTML = '';
+      errorBox.insertAdjacentHTML('afterbegin', markUp);
+      errorBox.dataset.errorBox = '';
+    }
   }
 
   render(inputValues) {
