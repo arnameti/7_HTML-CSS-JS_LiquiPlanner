@@ -62,10 +62,10 @@ const ListView = class {
     }
   }
 
-  render(inputValues) {
+  render(entries) {
     const listContainer = document.querySelector('[data-list]');
 
-    const markUp = this._generateMarkUp(inputValues);
+    const markUp = this._generateMarkUp(entries);
 
     listContainer.innerHTML = '';
     listContainer.insertAdjacentHTML('afterbegin', markUp);
@@ -81,7 +81,8 @@ const ListView = class {
 
   checkAmountType(inputValues) {
     let value;
-    inputValues.radioBtns.forEach(radioBtn => {
+    const radioBtns = inputValues.radioBtns;
+    radioBtns.forEach(radioBtn => {
       if (radioBtn.checked) {
         value = radioBtn.value;
       }
@@ -89,31 +90,35 @@ const ListView = class {
     return value;
   }
 
-  _generateMarkUp(inputValues) {
-    return `
-    <article class="list__month">
-    <div class="list__date_amount mt-20 mb-20">
-      <h1 class="list__date heading-1">${this.formatDate(inputValues.date)}</h1>
-      <span class="list__amount" data-type-amount="${this.checkAmountType(
-        inputValues
-      )}">80000 $</span>
-    </div>
-     <ul class="list__info-row">
-      <li class="list__entry">
-        <span class="list__entry__date">${inputValues.date}</span>
-        <span class="list__entry__title">${inputValues.title}</span>
-        <span class="list__entry__amount">${inputValues.amount} $</span>
-          <button class="list__entry__delete">
-            <img
-              class="list__entry__delete-img"
-              src="${deleteIcon}"
-              alt=""
-            />
-            </button>
-        </li>
-      </ul>
-    </article>
-    `;
+  _generateMarkUp(entries) {
+    return entries
+      .map(inputValues => {
+        return `
+     <article class="list__month">
+     <div class="list__date_amount mt-20 mb-20">
+       <h1 class="list__date heading-1">${this.formatDate(
+         inputValues.date
+       )}</h1>
+       <span class="list__amount" data-type-amount> 80000 $</span>
+     </div>
+      <ul class="list__info-row">
+       <li class="list__entry">
+         <span class="list__entry__date">${inputValues.date}</span>
+         <span class="list__entry__title">${inputValues.title}</span>
+         <span class="list__entry__amount">${inputValues.amount} $</span>
+           <button class="list__entry__delete">
+             <img
+               class="list__entry__delete-img"
+               src="${deleteIcon}"
+               alt=""
+             />
+             </button>
+         </li>
+       </ul>
+     </article>
+     `;
+      })
+      .join('');
   }
 };
 
