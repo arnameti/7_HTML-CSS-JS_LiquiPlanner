@@ -2,13 +2,25 @@ import deleteIcon from 'url:../../assets/trash-solid.svg';
 
 const ListView = class {
   _formEL = document.querySelector('[data-form]');
-
+  _listContainer = document.querySelector('[data-list]');
   _inputTitleEl = document.querySelector('[data-input-title]');
   _inputAmountEl = document.querySelector('[data-input-amount]');
   _inputDateEl = document.querySelector('[data-input-date]');
   _radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
 
   _errorMessages = [];
+
+  deleteEntry(handler) {
+    this._listContainer.addEventListener('click', function (e) {
+      const clicked = e.target.closest('[data-entry-id]');
+
+      if (!clicked) return;
+
+      const id = clicked.dataset.entryId;
+
+      handler(+id);
+    });
+  }
 
   getInputData(handler) {
     this._formEL.addEventListener('submit', e => {
@@ -19,6 +31,7 @@ const ListView = class {
         amount: this._inputAmountEl.value,
         date: this._inputDateEl.value,
         radioBtns: this._radioBtnsEl,
+        id: Date.now(),
       };
 
       this.checkInputFields(inputValues);
@@ -63,12 +76,10 @@ const ListView = class {
   }
 
   render(entries) {
-    const listContainer = document.querySelector('[data-list]');
-
     const markUp = this._generateMarkUp(entries);
 
-    listContainer.innerHTML = '';
-    listContainer.insertAdjacentHTML('afterbegin', markUp);
+    this._listContainer.innerHTML = '';
+    this._listContainer.insertAdjacentHTML('afterbegin', markUp);
   }
 
   formatDate(inputDate) {
@@ -94,7 +105,7 @@ const ListView = class {
     return entries
       .map(inputValues => {
         return `
-     <article class="list__month">
+     <article class="list__month" data-entry-id="${inputValues.id}">
      <div class="list__date_amount mt-20 mb-20">
        <h1 class="list__date heading-1">${this.formatDate(
          inputValues.date
@@ -106,7 +117,7 @@ const ListView = class {
          <span class="list__entry__date">${inputValues.date}</span>
          <span class="list__entry__title">${inputValues.title}</span>
          <span class="list__entry__amount">${inputValues.amount} $</span>
-           <button class="list__entry__delete">
+           <button class="list__entry__delete" data-delete-btn>
              <img
                class="list__entry__delete-img"
                src="${deleteIcon}"

@@ -13,9 +13,17 @@ const controlInputData = function (inputValues) {
   listView.render(model.state.entries);
 };
 
+const controlDeleteEntry = function (id) {
+  console.log(id);
+  model.deleteEntry(id);
+  model.fetchBookmarks();
+  listView.render(model.state.entries);
+};
+
 const init = function () {
   controlLoadData();
   listView.getInputData(controlInputData);
+  listView.deleteEntry(controlDeleteEntry);
 };
 
 init();
