@@ -1,4 +1,7 @@
-import deleteIcon from 'url:../../assets/trash-solid.svg';
+import deleteIcon
+  from 'url:../../assets/trash-solid.svg';
+import Movement
+  from '../data/Movement';
 
 const ListView = class {
   _formEL = document.querySelector('[data-form]');
@@ -6,12 +9,11 @@ const ListView = class {
   _inputTitleEl = document.querySelector('[data-input-title]');
   _inputAmountEl = document.querySelector('[data-input-amount]');
   _inputDateEl = document.querySelector('[data-input-date]');
-  _radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
 
   _errorMessages = [];
 
   deleteEntry(handler) {
-    this._listContainer.addEventListener('click', function (e) {
+    this._listContainer.addEventListener('click', function(e) {
       const clicked = e.target.closest('[data-entry-id]');
 
       if (!clicked) return;
@@ -26,18 +28,26 @@ const ListView = class {
     this._formEL.addEventListener('submit', e => {
       e.preventDefault();
 
-      const inputValues = {
-        title: this._inputTitleEl.value,
-        amount: this._inputAmountEl.value,
-        date: this._inputDateEl.value,
-        radioBtns: this._radioBtnsEl,
-        id: Date.now(),
-      };
+      // const radioBtnsEl = document.querySelectorAll('[data-radio-btn]');
 
-      this.checkInputFields(inputValues);
+      // const inputValues = {
+      //   title: this._inputTitleEl.value,
+      //   amount: this._inputAmountEl.value,
+      //   date: this._inputDateEl.value,
+      //   // radioBtns: radioBtnsEl,
+      //   id: Date.now()
+      // };
+
+      const movement = new Movement(
+        this._inputTitleEl.value,
+        this._inputAmountEl.value,
+        this._inputDateEl.value
+      );
+
+      this.checkInputFields(movement);
 
       if (this._errorMessages.length <= 0) {
-        handler(inputValues);
+        handler(movement);
 
         this._inputAmountEl.value = '';
         this._inputTitleEl.value = '';
@@ -85,43 +95,42 @@ const ListView = class {
   formatDate(inputDate) {
     const date = new Date(inputDate);
     // prettier-ignore
-    const months =['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     return `${months[date.getMonth()]} ${date.getFullYear()}`;
   }
 
-  checkAmountType(inputValues) {
-    let value;
-    const radioBtns = inputValues.radioBtns;
-    radioBtns.forEach(radioBtn => {
-      if (radioBtn.checked) {
-        value = radioBtn.value;
-      }
-    });
-    return value;
-  }
+  // checkAmountType(inputValues) {
+  //   let value;
+
+  //   inputValues.radioBtns.forEach(radioBtn => {
+  //     if (radioBtn.checked) {
+  //     }
+  //   });
+  // }
+
 
   _generateMarkUp(entries) {
     return entries
       .map(inputValues => {
         return `
-     <article class="list__month" data-entry-id="${inputValues.id}">
-     <div class="list__date_amount mt-20 mb-20">
-       <h1 class="list__date heading-1">${this.formatDate(
-         inputValues.date
-       )}</h1>
-       <span class="list__amount" data-type-amount> 80000 $</span>
+     <article class='list__month' data-entry-id='${inputValues.id}'>
+     <div class='list__date_amount mt-20 mb-20'>
+       <h1 class='list__date heading-1'>${this.formatDate(
+          inputValues.date
+        )}</h1>
+       <span class='list__amount' data-type-amount=''>80000 $</span>
      </div>
-      <ul class="list__info-row">
-       <li class="list__entry">
-         <span class="list__entry__date">${inputValues.date}</span>
-         <span class="list__entry__title">${inputValues.title}</span>
-         <span class="list__entry__amount">${inputValues.amount} $</span>
-           <button class="list__entry__delete" data-delete-btn>
+      <ul class='list__info-row'>
+       <li class='list__entry'>
+         <span class='list__entry__date'>${inputValues.date}</span>
+         <span class='list__entry__title'>${inputValues.title}</span>
+         <span class='list__entry__amount'>${inputValues.amount} $</span>
+           <button class='list__entry__delete' data-delete-btn>
              <img
-               class="list__entry__delete-img"
-               src="${deleteIcon}"
-               alt=""
+               class='list__entry__delete-img'
+               src='${deleteIcon}'
+               alt=''
              />
              </button>
          </li>
