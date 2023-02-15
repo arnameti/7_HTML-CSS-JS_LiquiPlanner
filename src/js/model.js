@@ -7,7 +7,13 @@ export const state = {
   entries: []
 };
 
-export const pushEntry = function(movement) {
+const sortMovementByYearAndMonth = function() {
+  return state.entries
+    .sort((a, b) => b.year - a.year)
+    .sort((a, b) => b.month - a.month);
+};
+
+export const pushMovement = function(movement) {
   if (JSON.stringify(movement) === '{}') return;
 
   const year = new Date(movement.date).getFullYear();
@@ -22,6 +28,8 @@ export const pushEntry = function(movement) {
   movementListFound
     ? movementListFound.movements.push(mov)
     : state.entries.push(new MovementList(year, month, new Array(mov)));
+
+  sortMovementByYearAndMonth();
 
   localStorage.setItem('entries', JSON.stringify(state.entries));
 };

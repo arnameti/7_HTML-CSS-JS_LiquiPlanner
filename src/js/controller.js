@@ -9,7 +9,7 @@ const controlLoadData = function() {
 };
 
 const controlInputData = function(movement) {
-  model.pushEntry(movement);
+  model.pushMovement(movement);
 
   console.log(model.state.entries);
 
