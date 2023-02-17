@@ -1,64 +1,50 @@
-import MovementList
-  from './data/MovementList';
-import Movement
-  from './data/Movement';
+import MonthlyListing
+  from './data/MonthlyListing';
+import Entry
+  from './data/Entry';
+import {stringifyWithFunctions, parseWithFunctions} from './data/helpers';
 
 export const state = {
-  entries: []
+  monthlyListings: []
 };
 
 const sortMovementByYearAndMonth = function() {
-  return state.entries
-    .sort((a, b) => b.year - a.year)
-    .sort((a, b) => b.month - a.month);
+  return state.monthlyListings
+    .sort((d1, d2) => d2.year - d1.year)
+    .sort((d1, d2) => d2.month - d1.month);
 };
 
-export const pushMovement = function(movement) {
-  if (JSON.stringify(movement) === '{}') return;
+export const pushMovement = function(entry) {
+  if (JSON.stringify(entry) === '{}') return;
 
-  const year = new Date(movement.date).getFullYear();
-  const month = new Date(movement.date).getMonth();
+  const year = entry.year;
+  const month = entry.month;
 
-  const movementListFound =
-    state.entries.find(mov => mov.year === year && mov.month === month);
+  const monthlyListingFound =
+    state.monthlyListings.find(monthlyList => monthlyList.year === year && monthlyList.month === month);
 
   const mov =
-    new Movement(movement.title, movement.amount, movement.date);
+    new Entry(entry.title, entry.amount, entry.date);
 
-  movementListFound
-    ? movementListFound.movements.push(mov)
-    : state.entries.push(new MovementList(year, month, new Array(mov)));
+  monthlyListingFound
+    ? monthlyListingFound.entries.push(mov)
+    : state.monthlyListings.push(new MonthlyListing(year, month, new Array(mov)));
 
   sortMovementByYearAndMonth();
 
-  localStorage.setItem('entries', JSON.stringify(state.entries));
+  localStorage.setItem('monthlyListing', stringifyWithFunctions(state.monthlyListings));
 };
 
 export const fetchBookmarks = function() {
-  if (localStorage.getItem('entries'))
-    state.entries = JSON.parse(localStorage.getItem('entries'));
+  if (localStorage.getItem('monthlyListing'))
+    state.monthlyListings = parseWithFunctions(localStorage.getItem('monthlyListing'));
 };
 
 export const deleteEntry = function(id) {
-  const entryIndex = state.entries.findIndex(entry => entry.id === id);
-  state.entries.splice(entryIndex, 1);
-  localStorage.setItem('entries', JSON.stringify(state.entries));
+  const entryIndex = state.monthlyListings.findIndex(monthlyList => monthlyList.id === id);
+  state.monthlyListings.splice(entryIndex, 1);
+  localStorage.setItem('monthlyListing', JSON.stringify(state.monthlyListings));
 };
 
-// export const sortAndOrganizeEntriesByDate = function(entriesArray) {
-//   return entriesArray.sort((a, b) => {
-//     return new Date(b.date) - new Date(a.date);
-//   }).reduce((acc, entry) => {
-//     const keyYear = new Date(entry.date).getFullYear();
-//     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-//     const keyMonth = months[new Date(entry.date).getMonth()];
-//     const key = `${keyMonth} ${keyYear}`;
-//     const value = acc[key] || [];
-//     return {
-//       ...acc,
-//       [key]: [...value, entry]
-//     };
-//   }, {});
-// };
 
 
