@@ -32,18 +32,18 @@ export const pushMovement = function(entry) {
 
   sortMovementByYearAndMonth();
 
-  localStorage.setItem('monthlyListing', stringifyWithFunctions(state.monthlyListings));
+  localStorage.setItem('monthlyListings', stringifyWithFunctions(state.monthlyListings));
 };
 
 export const fetchBookmarks = function() {
-  if (localStorage.getItem('monthlyListing'))
-    state.monthlyListings = parseWithFunctions(localStorage.getItem('monthlyListing'));
+  if (localStorage.getItem('monthlyListings'))
+    state.monthlyListings = parseWithFunctions(localStorage.getItem('monthlyListings'));
 };
 
 export const deleteEntry = function(id) {
   const entryIndex = state.monthlyListings.findIndex(monthlyList => monthlyList.id === id);
   state.monthlyListings.splice(entryIndex, 1);
-  localStorage.setItem('monthlyListing', JSON.stringify(state.monthlyListings));
+  localStorage.setItem('monthlyListings', JSON.stringify(state.monthlyListings));
 };
 
 

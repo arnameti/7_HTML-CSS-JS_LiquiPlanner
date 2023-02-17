@@ -6,7 +6,7 @@ export default class MonthlyListing {
   }
 
   get entries() {
-   return this.allEntries.sort((a, b) => new Date(b.date) - new Date(a.date))
+   return this.allEntries.sort((d1, d2) => new Date(d2.date) - new Date(d1.date))
   }
 }
 
