@@ -17,6 +17,7 @@ const ListView = class {
       const clicked = e.target.closest('[data-entry-id]');
 
       if (!clicked) return;
+      console.log(clicked);
 
       const id = clicked.dataset.entryId;
       console.log(id);
