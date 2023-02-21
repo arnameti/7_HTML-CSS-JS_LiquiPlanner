@@ -19,6 +19,7 @@ const ListView = class {
       if (!clicked) return;
 
       const id = clicked.dataset.entryId;
+      console.log(id);
 
       handler(+id);
     });

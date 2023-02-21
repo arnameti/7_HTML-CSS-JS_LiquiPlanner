@@ -2,7 +2,10 @@ import MonthlyListing
   from './data/MonthlyListing';
 import Entry
   from './data/Entry';
-import {stringifyWithFunctions, parseWithFunctions} from './data/helpers';
+import {
+  stringifyWithFunctions,
+  parseWithFunctions
+} from './data/helpers';
 
 export const state = {
   monthlyListings: []
@@ -23,12 +26,12 @@ export const pushMovement = function(entry) {
   const monthlyListingFound =
     state.monthlyListings.find(monthlyList => monthlyList.year === year && monthlyList.month === month);
 
-  const mov =
+  const e =
     new Entry(entry.title, entry.amount, entry.date);
 
   monthlyListingFound
-    ? monthlyListingFound.entries.push(mov)
-    : state.monthlyListings.push(new MonthlyListing(year, month, new Array(mov)));
+    ? monthlyListingFound.entries.push(e)
+    : state.monthlyListings.push(new MonthlyListing(year, month, new Array(e)));
 
   sortMovementByYearAndMonth();
 
@@ -41,9 +44,12 @@ export const fetchBookmarks = function() {
 };
 
 export const deleteEntry = function(id) {
-  const entryIndex = state.monthlyListings.findIndex(monthlyList => monthlyList.id === id);
-  state.monthlyListings.splice(entryIndex, 1);
-  localStorage.setItem('monthlyListings', JSON.stringify(state.monthlyListings));
+  state.monthlyListings.forEach(monthlyList => {
+    const entryIndex = monthlyList.entries.findIndex(entry => entry.id === id);
+    monthlyList.entries.splice(entryIndex, 1);
+  });
+  console.log(state.monthlyListings);
+  localStorage.setItem('monthlyListings', stringifyWithFunctions(state.monthlyListings));
 };
 
 
