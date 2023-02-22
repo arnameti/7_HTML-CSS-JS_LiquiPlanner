@@ -17,10 +17,12 @@ const controlInputData = function(entry) {
 
   listView.render(model.state.monthlyListings);
   summaryView.render();
+
+  console.log(model.state.monthlyListings);
 };
 
-const controlDeleteEntry = function(id) {
-  model.deleteEntry(id);
+const controlDeleteEntry = function(entryId, monthlyListingId) {
+  model.deleteEntry(entryId, monthlyListingId);
   model.fetchBookmarks();
   listView.render(model.state.monthlyListings);
 };

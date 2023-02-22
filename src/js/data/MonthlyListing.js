@@ -3,6 +3,7 @@ export default class MonthlyListing {
     this.year = year;
     this.month = month;
     this.entries = entries;
+    this.id = Date.now();
   }
 }
 

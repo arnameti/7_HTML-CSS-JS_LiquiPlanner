@@ -17,12 +17,13 @@ const ListView = class {
       const clicked = e.target.closest('[data-entry-id]');
 
       if (!clicked) return;
-      console.log(clicked);
 
-      const id = clicked.dataset.entryId;
-      console.log(id);
 
-      handler(+id);
+      const entryId = clicked.dataset.entryId;
+      const monthlyListingId =
+        clicked.closest('[data-monthly-listing-id]').dataset.monthlyListingId;
+
+      handler(+entryId, +monthlyListingId);
     });
   }
 
@@ -77,8 +78,9 @@ const ListView = class {
     }
   }
 
-  render(entries) {
-    const markUp = this._generateMarkUp(entries);
+  render(monthlyListings) {
+    const markUp =
+      monthlyListings.length ? this._generateMarkUp(monthlyListings) : '';
 
     this._listContainer.innerHTML = '';
     this._listContainer.insertAdjacentHTML('afterbegin', markUp);
@@ -96,14 +98,15 @@ const ListView = class {
     return monthlyListings
       .map(monthlyListing => {
         return `
-     <article class='list__month'>
-     
+    <article class='list__month' data-monthly-listing-id='${monthlyListing.id}'>
+
      <div class='list__date_amount mt-20 mb-20'>
        <h1 class='list__date heading-1'>${this.formatDate(monthlyListing.month, monthlyListing.year)}</h1>
        <span class='list__amount' data-type-amount=''>80000 $</span>
      </div>
-     
+
       <ul class='list__info-row'>
+
       ${monthlyListing.entries.map(e => {
           return `
        <li class='list__entry mb-10'>
@@ -119,8 +122,8 @@ const ListView = class {
              </button>
          </li>`;
         }).join('')}
+
        </ul>
-       
      </article>`;
       }).join('');
   }

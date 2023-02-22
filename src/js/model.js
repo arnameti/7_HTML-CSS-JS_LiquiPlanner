@@ -48,13 +48,19 @@ export const fetchBookmarks = function() {
   }
 };
 
-export const deleteEntry = function(id) {
-  state.monthlyListings.forEach(monthlyList => {
-    const entryIndex = monthlyList.entries.findIndex(entry => entry.id === id);
-    monthlyList.entries.splice(entryIndex, 1);
-  });
+export const deleteEntry = function(entryId, monthlyListingId) {
+
+  const monthlyListingIndex =
+    state.monthlyListings.findIndex(monthlyListing => monthlyListing.id === monthlyListingId);
+
+  const entries = state.monthlyListings[monthlyListingIndex].entries;
+
+  if (entries.length > 1) {
+    const entryIndex = entries.findIndex(entry => entry.id === entryId);
+    entries.splice(entryIndex, 1);
+  } else {
+    state.monthlyListings.splice(monthlyListingIndex, 1);
+  }
+
   localStorage.setItem('monthlyListings', JSON.stringify(state.monthlyListings));
 };
-
-
-
